@@ -3,20 +3,20 @@
 
     angular.module('app')
         .controller('SubjectController', subjectController);
-        subjectController.$inject = ['subjectService', '$state'];
+        subjectController.$inject = ['subjectService', '$state', '$uibModal'];
 
         var currentId = 0;
 
-        function subjectController(subjectService, $state) {
+
+        function subjectController(subjectService, $state, $uibModal) {
             var self = this;
 
         //variables
             self.showForm = false;
             self.hideForm = hideForm;
-            self.currentObj = {};
+            self.currentSubject = {};
             self.list = {};
             self.listAllSubjects = {};
-            self.subject = {subject_name: "", subject_description: ""};
 
          //variables and methods for Pagination's panel
             self.totalSubjects = 0;
@@ -33,10 +33,10 @@
             self.getAllSubjects = getAllSubjects;
             self.getRecordsRange = getRecordsRange;
             self.countSubjects = countSubjects;
-            self.addSubject = addSubject;
             self.deleteSubject = deleteSubject;
             self.editSubject = editSubject;
             self.updateSubject = updateSubject;
+            self.showAddSubjectForm = showAddSubjectForm;
 
             activate();
 
@@ -60,11 +60,6 @@
                     .then(countSubjectComplete, rejected);
             }
 
-            function addSubject() {
-                subjectService.addSubject(self.subject)
-                    .then(addSubjectComplete, rejected)
-            }
-
             function deleteSubject(subject_id) {
                 subjectService.deleteSubject(subject_id)
                     .then(deleteSubjectComplete, rejected);
@@ -72,12 +67,12 @@
 
             function editSubject(subject) {
                 currentId = subject.subject_id;
-                self.currentObj = subject;
+                self.currentSubject = subject;
                 self.showForm = true;
             }
 
             function updateSubject() {
-                subjectService.editSubject(currentId, self.currentObj)
+                subjectService.editSubject(currentId, self.currentSubject)
                     .then(updateComplete, rejected);
             }
 
@@ -107,25 +102,29 @@
                 self.totalSubjects = response.data;
             }
 
-            function addSubjectComplete(response) {
-                if(response.data.response = "ok") {
-                    self.subject = {};
-                    $state.go('admin-home.subject')
-                }
-            }
-
             function deleteSubjectComplete(response) {
                 if(response.data.response == "ok") {
-                    countSubjects();
+                   countSubjects();
                    pageChanged();
                 }
             }
 
             function updateComplete(response) {
                 if(response.data.response == 'ok') {
-                    self.currentObj = {};
+                    self.currentSubject = {};
                     hideForm();
                 }
+            }
+
+            function showAddSubjectForm() {
+                var modalInstance = $uibModal.open({
+                    templateUrl: 'app/admin/subject/add-subject.html',
+                    controller: 'SubjectModalController as subjects'
+                });
+                modalInstance.result.then(function() {
+                    countSubjects();
+                    pageChanged();
+                })
             }
 
             function rejected(response) {

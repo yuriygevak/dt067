@@ -8,7 +8,7 @@
                     <th colspan="5">Предмети</th>
                     <th class="addGroup" data-target="#addGroup" data-toggle="modal">
                         <button type="button" class="btn btn-default entity-btn" title="Додати предмет"
-                                ui-sref="admin-home.subjectNew"><i class="glyphicon glyphicon-plus"></i>
+                                ng-click="subjects.showAddSubjectForm()"><i class="glyphicon glyphicon-plus"></i>
                         </button>
                     </th>
                   </tr>
@@ -73,14 +73,14 @@
                             <label class="control-label col-sm-2" for="name">Назва предмету: </label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="name" required
-                                       placeholder="Напиши назву предмету" ng-model="subjects.currentObj.subject_name">
+                                       placeholder="Напиши назву предмету" ng-model="subjects.currentSubject.subject_name">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="description">Опис предмету: </label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" id="description" required
-                                       placeholder="Додай опис предмету" ng-model="subjects.currentObj.subject_description">
+                                       placeholder="Додай опис предмету" ng-model="subjects.currentSubject.subject_description">
                             </div>
                         </div>
                         <div class="form-group">
