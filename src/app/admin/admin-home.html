@@ -1,0 +1,87 @@
+<!-- container section start -->
+  <section id="container" class="">
+     
+      
+      <header class="header dark-bg">
+            <div class="toggle-nav">
+                <div class="icon-reorder" data-original-title="Toggle Navigation" data-placement="bottom"><i class="icon_menu"></i></div>
+            </div>
+
+            <!--logo start-->
+            <a href="index.html" class="logo">Menu<span class="lite">Admin</span></a>
+            <!--logo end-->
+
+      </header>      
+      <!--header end-->
+
+      <!--sidebar start-->
+      <aside class="admin-aside col-md-2">
+          <div id="sidebar"  class="nav-collapse ">
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu">                
+                  <li >
+                      <a ui-sref="StatisticSystem" class="" >
+                          <span>Statistics system</span>
+                      </a>
+                  </li>
+				  <li class="sub-menu">
+                      <a ui-sref="GroupsAndStudents" class="">
+                          <span>Groups and students</span>
+                         <!--  <span class="menu-arrow arrow_carrot-right"></span> -->
+                      </a>
+                  </li>       
+                  <li>
+                      <a ui-sref="admin-home.subject" class="">
+                          <span>Subjects</span>
+                      </a>
+                  </li>
+                  <li>
+                      <a class="" ui-sref="TestsOfSubject">
+                          <span>Subject tests</span>
+                      </a>
+                  </li>
+                             
+
+                 <li class="sub-menu">
+                      <a ui-sref="RegistrationTestTask" class="">
+                          <span>New test task</span>
+                      </a>
+                  </li>
+
+                   <li class="sub-menu">
+                      <a ui-sref="admin-home.admin" class="">
+                          <span>Admins</span>
+                      </a>
+                  </li>
+
+                  <li class="sub-menu">
+                      <a ui-sref="admin-home.speciality" class="">
+                          <span>Specialities</span>
+                      </a>
+                  </li>
+
+                  <li class="sub-menu">
+                      <a ui-sref="admin-home.faculty" class="">
+                          <span>Faculties</span>
+                      </a>
+                  </li>
+
+                  <li>                     
+                      <a ui-sref="login" class="">
+                          <span>Log out</span>
+                          
+                      </a>
+                                         
+                  </li>
+                  
+              </ul>
+              <!-- sidebar menu end-->
+          </div>
+      </aside>
+      
+      <section ui-view="content" class="col-xs-12 col-md-12"></section>
+
+
+
+
+  </section>
