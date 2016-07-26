@@ -24,7 +24,7 @@
             delSpeciality: 'http://dtapi.local/speciality/del/',
 
             getFaculties: 'http://dtapi.local/faculty/getRecords',
-            getRangeOfFacultiesURL: 'http://dtapi.local/faculty/getRecordsRange/10/9',
+            getRangeOfFaculties: 'http://dtapi.local/faculty/getRecordsRange',
             countFaculties: 'http://dtapi.local/faculty/countRecords',
             addFaculty: 'http://dtapi.local/faculty/insertData',
             editFaculty: 'http://dtapi.local/faculty/update/',
@@ -38,4 +38,4 @@
         })
 
     ;
-})();
+}());

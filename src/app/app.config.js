@@ -43,6 +43,16 @@ angular.module('app')
             }
         })
 
+        .state('admin-home.newFaculty', {
+            url: '/newFaculty',
+            views: {
+                'content': {
+                    templateUrl: 'app/admin/faculty/faculty-add.html',
+                    controller: 'facultyCtrl as faculty'
+                }
+            }
+        })
+
         .state('admin-home.admin', {
             url: '/edit-admin',
             views: {
