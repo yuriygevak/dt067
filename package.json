@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "prestart": "bower install && npm install",
     "start": "gulp index && gulp admin && gulp sass && node app.js"
   },
   "author": "",
@@ -13,7 +14,15 @@
   },
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-if": "^2.0.1",
     "gulp-inject": "^4.0.0",
-    "gulp-sass": "^2.3.2"
+    "gulp-jscs": "^4.0.0",
+    "gulp-jshint": "^2.0.1",
+    "gulp-print": "^2.0.1",
+    "gulp-sass": "^2.3.2",
+    "gulp-util": "^3.0.7",
+    "jshint": "^2.9.2",
+    "jshint-stylish": "^2.2.0",
+    "yargs": "^4.8.1"
   }
 }

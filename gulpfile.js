@@ -1,8 +1,32 @@
 'use strict';
 
-var gulp = require('gulp'),
-	 inject = require('gulp-inject'),
-	 sass = require('gulp-sass');
+var gulp = require('gulp');
+var inject = require('gulp-inject');
+var sass = require('gulp-sass');
+var jshint = require('gulp-jshint');
+var jscs = require('gulp-jscs');
+var util = require('gulp-util');
+var gulpprint = require('gulp-print');
+var gulpIf = require('gulp-if');
+var print = require('gulp-print');
+
+var args = require('yargs').argv;
+
+gulp.task('vet', function() {
+    log('Analyzing source with JSHINT and JSCS');
+    return gulp
+        .src([
+            './src/**/*.js',
+            './*.js'
+        ])
+        .pipe(gulpIf(args.verbose, print()))
+        .pipe(jscs())
+        .pipe(jshint())
+        .pipe(jshint.reporter('jshint-stylish', {verbose: true}))
+        // inform about errors not simple error message but directly what was failed
+        .pipe(jshint.reporter('fail')); // if smth was failed during jshint/jscs checking a process stops
+});
+
 
 gulp.task('sass', function () {
   return gulp.src('./sass/**/*.scss')
@@ -41,3 +65,15 @@ gulp.task('admin', function() {
   .pipe(gulp.dest('./views/admin'));
 });
 
+/////////////
+function log(msg) {
+    if (typeof(msg) === 'object') {
+        for (var item in msg) {
+            if (msg.hasOwnProperty(item)) {
+                util.log(util.colors.blue(msg[item]));
+            }
+        }
+    } else {
+        util.log(util.colors.blue(msg));
+    }
+}
